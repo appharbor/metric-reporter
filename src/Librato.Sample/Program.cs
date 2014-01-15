@@ -7,8 +7,11 @@ namespace Librato.Sample
 	{
 		public static void Main()
 		{
-			var writer = new L2MetWriter(new TraceTextWriter());
-			var reporter = new MetricReporter(writer);
+			// Write to console with the `Console.Out` text writer
+			var textWriter = new TraceTextWriter();
+
+			var metricWriter = new L2MetWriter(textWriter);
+			var reporter = new MetricReporter(metricWriter);
 
 			// Increment count by one
 			reporter.Increment("users");
