@@ -1,6 +1,6 @@
 ﻿namespace Librato
 {
-	public interface ILogWriter
+	public interface IMetricWriter
 	{
 		void Write(string input);
 	}

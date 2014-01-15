@@ -4,11 +4,11 @@ namespace Librato
 {
 	public class LogReporter
 	{
-		private readonly ILogWriter _logWriter;
+		private readonly IMetricWriter _metricWriter;
 
-		public LogReporter(ILogWriter logWriter)
+		public LogReporter(IMetricWriter metricWriter)
 		{
-			_logWriter = logWriter;
+			_metricWriter = metricWriter;
 		}
 
 		public void Increment(string counterName)
