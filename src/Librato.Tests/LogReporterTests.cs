@@ -64,5 +64,23 @@ namespace Librato.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == stopwatch.ElapsedMilliseconds)));
 		}
+
+		[Fact]
+		public void ShouldIncrementWithSourceWhenSpecified()
+		{
+			var source = "foo";
+			_logReporter.Increment("bar", source: source);
+
+			_metricWriterMock.Verify(x => x.Write(source, It.IsAny<Metric>()));
+		}
+
+		[Fact]
+		public void ShouldMeasureWithSourceWhenSpecified()
+		{
+			var source = "foo";
+			_logReporter.Measure("bar", 1, source: source);
+
+			_metricWriterMock.Verify(x => x.Write(source, It.IsAny<Metric>()));
+		}
 	}
 }

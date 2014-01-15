@@ -14,19 +14,19 @@ namespace Librato
 			_stopwatchFactory = stopwatchFactory;
 		}
 
-		public void Increment(string counterName, double value = 1)
+		public void Increment(string counterName, double value = 1, string source = null)
 		{
 			var metric = new CountMetric(counterName, value);
-			_metricWriter.Write(metric);
+			WriteMetric(source, metric);
 		}
 
-		public void Measure(string counterName, double value)
+		public void Measure(string counterName, double value, string source = null)
 		{
 			var metric = new MeasureMetric(counterName, value);
-			_metricWriter.Write(metric);
+			WriteMetric(source, metric);
 		}
 
-		public void Measure(string counterName, Action action)
+		public void Measure(string counterName, Action action, string source = null)
 		{
 			var stopWatch = _stopwatchFactory.Get();
 
@@ -34,7 +34,19 @@ namespace Librato
 			action();
 			stopWatch.Stop();
 
-			Measure(counterName, stopWatch.ElapsedMilliseconds);
+			Measure(counterName, stopWatch.ElapsedMilliseconds, source);
+		}
+
+		private void WriteMetric(string source, Metric metric)
+		{
+			if (string.IsNullOrEmpty(source))
+			{
+				_metricWriter.Write(metric);
+			}
+			else
+			{
+				_metricWriter.Write(source, metric);
+			}
 		}
 	}
 }
