@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using Moq;
 using Xunit;
 using Xunit.Extensions;
@@ -8,12 +9,14 @@ namespace Librato.Tests
 	public class LogReporterTests
 	{
 		private readonly Mock<IMetricWriter> _metricWriterMock;
+		private readonly Mock<StopwatchFactory> _stopwatchFactory;
 		private readonly LogReporter _logReporter;
 
 		public LogReporterTests()
 		{
 			_metricWriterMock = new Mock<IMetricWriter>(MockBehavior.Loose);
-			_logReporter = new LogReporter(_metricWriterMock.Object);
+			_stopwatchFactory = new Mock<StopwatchFactory>(MockBehavior.Loose);
+			_logReporter = new LogReporter(_metricWriterMock.Object, _stopwatchFactory.Object);
 		}
 
 		[Fact]
@@ -54,9 +57,12 @@ namespace Librato.Tests
 		[Fact]
 		public void ShouldMeasureTimeWhenInvokedWithAction()
 		{
+			var stopwatch = new Stopwatch();
+			_stopwatchFactory.Setup(x => x.Get()).Returns(stopwatch);
+
 			_logReporter.Measure("foo", () => Thread.Sleep(20));
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value > 20)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == stopwatch.ElapsedMilliseconds)));
 		}
 	}
 }
