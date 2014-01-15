@@ -3,5 +3,6 @@
 	public enum MetricType
 	{
 		Count,
+		Measure,
 	}
 }
