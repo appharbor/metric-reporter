@@ -41,5 +41,13 @@ namespace Librato.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == value)));
 		}
+
+		[Fact]
+		public void ShouldWriteMeasureMetricWhenMeasuring()
+		{
+			_logReporter.Measure("foo", 1);
+
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<MeasureMetric>()));
+		}
 	}
 }
