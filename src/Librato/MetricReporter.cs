@@ -41,9 +41,9 @@ namespace Librato
 			logReporterAction(logReporter);
 		}
 
-		public void Increment(string counterName, double value = 1, string source = null)
+		public void Increment(string counterName, double incrementBy = 1, string source = null)
 		{
-			var metric = new CountMetric(counterName, value);
+			var metric = new CountMetric(counterName, incrementBy);
 			WriteMetric(source, metric);
 		}
 
