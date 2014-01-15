@@ -5,15 +5,21 @@ namespace Librato.Tests
 {
 	public class LogReporterTests
 	{
+		private readonly Mock<IMetricWriter> _metricWriterMock;
+		private readonly LogReporter _logReporter;
+
+		public LogReporterTests()
+		{
+			_metricWriterMock = new Mock<IMetricWriter>(MockBehavior.Loose);
+			_logReporter = new LogReporter(_metricWriterMock.Object);
+		}
+
 		[Fact]
 		public void ShouldWriteCountMetricWhenIncrementing()
 		{
-			var metricWriterMock = new Mock<IMetricWriter>(MockBehavior.Loose);
-			var logReporter = new LogReporter(metricWriterMock.Object);
+			_logReporter.Increment("foo");
 
-			logReporter.Increment("foo");
-
-			metricWriterMock.Verify(x => x.Write(It.IsAny<CountMetric>()));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<CountMetric>()));
 		}
 	}
 }
