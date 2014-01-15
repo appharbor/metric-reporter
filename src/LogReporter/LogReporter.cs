@@ -11,9 +11,10 @@ namespace Librato
 			_metricWriter = metricWriter;
 		}
 
-		public void Increment(string counterName)
+		public void Increment(string counterName, long value = 1)
 		{
-			throw new NotImplementedException();
+			var metric = new CountMetric(counterName, value);
+			_metricWriter.Write(metric);
 		}
 	}
 }
