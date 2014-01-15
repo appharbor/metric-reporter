@@ -14,9 +14,27 @@ namespace Librato
 			_stopwatchFactory = stopwatchFactory;
 		}
 
+		private class PrefixingLogReporter : LogReporter
+		{
+			private readonly string _prefix;
+
+			public PrefixingLogReporter(string prefix, IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
+				: base(metricWriter, stopwatchFactory)
+			{
+				_prefix = prefix;
+			}
+
+			protected override void WriteMetric(string source, Metric metric)
+			{
+				metric.Prefix = _prefix;
+				base.WriteMetric(source, metric);
+			}
+		}
+
 		public void Group(string prefix, Action<LogReporter> logReporterAction)
 		{
-			throw new NotImplementedException();
+			var logReporter = new PrefixingLogReporter(prefix, _metricWriter, _stopwatchFactory);
+			logReporterAction(logReporter);
 		}
 
 		public void Increment(string counterName, double value = 1, string source = null)
