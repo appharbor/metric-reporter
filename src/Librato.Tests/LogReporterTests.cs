@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Librato.Tests
 {
@@ -28,6 +29,17 @@ namespace Librato.Tests
 			_logReporter.Increment("foo");
 
 			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == 1)));
+		}
+
+		[Theory]
+		[InlineData(1)]
+		[InlineData(1.5)]
+		[InlineData(2)]
+		public void ShouldIncrementByValueWhenSpecified(double value)
+		{
+			_logReporter.Increment("foo", value);
+
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == value)));
 		}
 	}
 }
