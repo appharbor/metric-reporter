@@ -21,5 +21,13 @@ namespace Librato.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.IsAny<CountMetric>()));
 		}
+
+		[Fact]
+		public void ShouldIncrementByOneWhenNoValueIsSpecified()
+		{
+			_logReporter.Increment("foo");
+
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == 1)));
+		}
 	}
 }
