@@ -28,7 +28,7 @@ namespace Librato
 
 		public void Measure(string counterName, Action action)
 		{
-			var stopWatch = new Stopwatch();
+			var stopWatch = _stopwatchFactory.Get();
 
 			stopWatch.Start();
 			action();
