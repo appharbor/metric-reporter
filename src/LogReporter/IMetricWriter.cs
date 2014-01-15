@@ -2,6 +2,6 @@
 {
 	public interface IMetricWriter
 	{
-		void Write(string input);
+		void Write(MetricType metricType, string counterName);
 	}
 }
