@@ -14,10 +14,10 @@ namespace Librato
 
 		public void Write(Metric metric)
 		{
-			Write(null, metric);
+			Write(metric, null);
 		}
 
-		public void Write(string source, Metric metric)
+		public void Write(Metric metric, string source)
 		{
 			var l2MetType = GetL2MetType(metric);
 			var prefix = string.IsNullOrEmpty(metric.Prefix) ? "" : string.Format("{0}.", metric.Prefix);

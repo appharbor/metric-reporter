@@ -68,7 +68,7 @@ namespace Librato.Tests
 			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
 			var source = "baz";
 
-			_l2MetWriter.Write(source, metric);
+			_l2MetWriter.Write(metric, source);
 
 			_textWriterMock.Verify(x => x.WriteLine(It.Is<string>(
 				y => y.StartsWith(string.Format("source={0} ", source)))));

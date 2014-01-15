@@ -3,6 +3,6 @@
 	public interface IMetricWriter
 	{
 		void Write(Metric metric);
-		void Write(string source, Metric metric);
+		void Write(Metric metric, string source);
 	}
 }

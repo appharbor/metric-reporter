@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="CountMetricTests.cs" />
     <Compile Include="L2MetWriterTests.cs" />
-    <Compile Include="LogReporterTests.cs" />
+    <Compile Include="MetricReporterTests.cs" />
     <Compile Include="MeasureMetricTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

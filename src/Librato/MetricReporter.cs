@@ -2,22 +2,22 @@
 
 namespace Librato
 {
-	public class LogReporter
+	public class MetricReporter
 	{
 		private readonly IMetricWriter _metricWriter;
 		private readonly StopwatchFactory _stopwatchFactory;
 
-		public LogReporter(IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
+		public MetricReporter(IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
 		{
 			_metricWriter = metricWriter;
 			_stopwatchFactory = stopwatchFactory;
 		}
 
-		private class PrefixingLogReporter : LogReporter
+		private class PrefixingMetricReporter : MetricReporter
 		{
 			private readonly string _prefix;
 
-			public PrefixingLogReporter(string prefix, IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
+			public PrefixingMetricReporter(string prefix, IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
 				: base(metricWriter, stopwatchFactory)
 			{
 				_prefix = prefix;
@@ -30,9 +30,9 @@ namespace Librato
 			}
 		}
 
-		public void Group(string prefix, Action<LogReporter> logReporterAction)
+		public void Group(string prefix, Action<MetricReporter> logReporterAction)
 		{
-			var logReporter = new PrefixingLogReporter(prefix, _metricWriter, _stopwatchFactory);
+			var logReporter = new PrefixingMetricReporter(prefix, _metricWriter, _stopwatchFactory);
 			logReporterAction(logReporter);
 		}
 
@@ -67,7 +67,7 @@ namespace Librato
 			}
 			else
 			{
-				_metricWriter.Write(source, metric);
+				_metricWriter.Write(metric, source);
 			}
 		}
 	}

@@ -41,7 +41,7 @@
     <Compile Include="CountMetric.cs" />
     <Compile Include="IMetricWriter.cs" />
     <Compile Include="L2MetWriter.cs" />
-    <Compile Include="LogReporter.cs" />
+    <Compile Include="MetricReporter.cs" />
     <Compile Include="MeasureMetric.cs" />
     <Compile Include="Metric.cs" />
     <Compile Include="MetricType.cs" />
