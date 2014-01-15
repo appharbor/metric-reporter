@@ -36,5 +36,11 @@
 				return _value;
 			}
 		}
+
+		public virtual string Prefix
+		{
+			get;
+			set;
+		}
 	}
 }
