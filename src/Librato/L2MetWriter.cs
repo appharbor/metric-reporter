@@ -20,11 +20,13 @@ namespace Librato
 
 		private static string GetL2MetType(Metric metric)
 		{
-			if (metric is CountMetric)
+			switch (metric.MetricType)
 			{
-				return "count";
+				case MetricType.Count:
+					return "count";
+				default:
+					throw new NotSupportedException();
 			}
-			throw new NotSupportedException();
 		}
 	}
 }
