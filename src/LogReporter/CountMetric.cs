@@ -1,6 +1,6 @@
 ﻿namespace Librato
 {
-	public class CountMetric
+	public class CountMetric : Metric
 	{
 	}
 }
