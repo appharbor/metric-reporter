@@ -7,6 +7,11 @@ namespace Librato
 		private readonly IMetricWriter _metricWriter;
 		private readonly StopwatchFactory _stopwatchFactory;
 
+		public MetricReporter(IMetricWriter metricWriter)
+			: this(metricWriter, new StopwatchFactory())
+		{
+		}
+
 		public MetricReporter(IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
 		{
 			_metricWriter = metricWriter;
