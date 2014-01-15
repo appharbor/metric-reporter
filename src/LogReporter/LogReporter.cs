@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Librato
 {
@@ -9,6 +10,11 @@ namespace Librato
 		public LogReporter(TextWriter writer)
 		{
 			_writer = writer;
+		}
+
+		public void Increment()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
