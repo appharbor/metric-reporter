@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Librato
 {
@@ -25,7 +26,13 @@ namespace Librato
 
 		public void Measure(string counterName, Action action)
 		{
-			throw new NotImplementedException();
+			var stopWatch = new Stopwatch();
+
+			stopWatch.Start();
+			action();
+			stopWatch.Stop();
+
+			Measure(counterName, stopWatch.ElapsedMilliseconds);
 		}
 	}
 }
