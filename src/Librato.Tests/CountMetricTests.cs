@@ -8,6 +8,7 @@ namespace Librato.Tests
 		public void ShouldSetMetricTypeToCount()
 		{
 			var countMetric = new CountMetric("foo", 1);
+
 			Assert.Equal(MetricType.Count, countMetric.MetricType);
 		}
 	}
