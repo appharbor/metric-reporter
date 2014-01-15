@@ -82,5 +82,17 @@ namespace Librato.Tests
 
 			_metricWriterMock.Verify(x => x.Write(source, It.IsAny<Metric>()));
 		}
+
+		[Fact]
+		public void ShouldPrefixMetricsWhenGrouping()
+		{
+			var prefix = "foo";
+			_logReporter.Group(prefix, x =>
+			{
+				x.Increment("bar");
+			});
+
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefix == prefix)));
+		}
 	}
 }
