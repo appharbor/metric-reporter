@@ -60,7 +60,7 @@ namespace Librato.Tests
 			var stopwatch = new Stopwatch();
 			_stopwatchFactory.Setup(x => x.Get()).Returns(stopwatch);
 
-			_logReporter.Measure("foo", () => Thread.Sleep(20));
+			_logReporter.Measure("foo", () => Thread.Sleep(1));
 
 			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == stopwatch.ElapsedMilliseconds)));
 		}
