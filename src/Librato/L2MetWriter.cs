@@ -15,7 +15,10 @@ namespace Librato
 		public void Write(Metric metric)
 		{
 			var l2MetType = GetL2MetType(metric);
-			_textWriter.WriteLine(string.Format("{0}#{1}={2}", l2MetType, metric.Name, metric.Value));
+			var prefix = string.IsNullOrEmpty(metric.Prefix) ? "" : string.Format("{0}.", metric.Prefix);
+			var l2metMetric = string.Format("{0}#{1}{2}={3}", l2MetType, prefix, metric.Name, metric.Value);
+
+			_textWriter.WriteLine(l2metMetric);
 		}
 
 		public void Write(string source, Metric metric)
