@@ -2,7 +2,7 @@
 {
 	public class CountMetric : Metric
 	{
-		public CountMetric(string name, long value)
+		public CountMetric(string name, double value)
 			: base(MetricType.Count, name, value)
 		{
 		}

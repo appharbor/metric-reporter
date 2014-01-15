@@ -4,16 +4,16 @@
 	{
 		private readonly MetricType _metricType;
 		private readonly string _name;
-		private readonly long _value;
+		private readonly double _value;
 
-		public Metric(MetricType metricType, string name, long value)
+		public Metric(MetricType metricType, string name, double value)
 		{
 			_metricType = metricType;
 			_name = name;
 			_value = value;
 		}
 
-		public virtual long Value
+		public virtual double Value
 		{
 			get
 			{
