@@ -6,6 +6,9 @@ namespace Librato.Tests
 {
 	public class L2MetWriterTests
 	{
+		private static readonly string DefaultMetricName = "foo";
+		private static readonly double DefaultMetricValue = 1;
+
 		private readonly Mock<TextWriter> _textWriterMock;
 		private readonly L2MetWriter _l2MetWriter;
 
@@ -18,60 +21,51 @@ namespace Librato.Tests
 		[Fact]
 		public void ShouldSupportMeasureMetric()
 		{
-			var metricName = "foo";
-			var metricValue = 1;
-			var metric = new MeasureMetric(metricName, metricValue);
+			var metric = new MeasureMetric(DefaultMetricName, DefaultMetricValue);
 
 			_l2MetWriter.Write(metric);
 
-			_textWriterMock.Verify(x => x.WriteLine(string.Format("measure#{0}={1}", metricName, metricValue)));
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("measure#{0}={1}", DefaultMetricName, DefaultMetricValue)));
 		}
 
 		[Fact]
 		public void ShouldSupportCountMetric()
 		{
-			var metricName = "foo";
-			var metricValue = 1;
-			var metric = new CountMetric(metricName, metricValue);
+			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
 
 			_l2MetWriter.Write(metric);
 
-			_textWriterMock.Verify(x => x.WriteLine(string.Format("count#{0}={1}", metricName, metricValue)));
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("count#{0}={1}", DefaultMetricName, DefaultMetricValue)));
 		}
 
 		[Fact]
 		public void ShouldWriteL2MetFormattedMetric()
 		{
-			var metricName = "foo";
-			var metricValue = 123;
+			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
 
-			var metric = new CountMetric(metricName, metricValue);
 			_l2MetWriter.Write(metric);
 
-			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}={2}", "count", metricName, metricValue)));
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}={2}", "count", DefaultMetricName, DefaultMetricValue)));
 		}
 
 		[Fact]
 		public void ShouldWriteMetricWithPrefixIfSet()
 		{
-			var prefix = "foo";
-			var metricName = "bar";
-			var metricValue = 1;
-
-			var metric = new CountMetric(metricName, 1)
+			var prefix = "bar";
+			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue)
 			{
 				Prefix = prefix,
 			};
 
 			_l2MetWriter.Write(metric);
 
-			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, metricName, metricValue)));
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, DefaultMetricName, DefaultMetricValue)));
 		}
 
 		[Fact]
 		public void ShouldPrependSourceWhenSpecified()
 		{
-			var metric = new CountMetric("foo", 1);
+			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
 			var source = "baz";
 
 			_l2MetWriter.Write(source, metric);
