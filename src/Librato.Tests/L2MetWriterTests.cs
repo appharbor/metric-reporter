@@ -16,7 +16,7 @@ namespace Librato.Tests
 		}
 
 		[Fact]
-		public void ShouldWriteL2MetMetrics()
+		public void ShouldWriteL2MetFormattedMetric()
 		{
 			var metricName = "foo";
 			var metricValue = 123;
