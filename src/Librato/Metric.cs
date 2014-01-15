@@ -13,6 +13,14 @@
 			_value = value;
 		}
 
+		public virtual string Name
+		{
+			get
+			{
+				return _name;
+			}
+		}
+
 		public virtual double Value
 		{
 			get
