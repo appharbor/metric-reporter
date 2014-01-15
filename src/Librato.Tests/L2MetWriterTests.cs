@@ -28,6 +28,18 @@ namespace Librato.Tests
 		}
 
 		[Fact]
+		public void ShouldSupportCountMetric()
+		{
+			var metricName = "foo";
+			var metricValue = 1;
+			var metric = new CountMetric(metricName, metricValue);
+
+			_l2MetWriter.Write(metric);
+
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("count#{0}={1}", metricName, metricValue)));
+		}
+
+		[Fact]
 		public void ShouldWriteL2MetFormattedMetric()
 		{
 			var metricName = "foo";
