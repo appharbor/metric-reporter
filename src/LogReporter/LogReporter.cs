@@ -12,7 +12,7 @@ namespace Librato
 			_writer = writer;
 		}
 
-		public void Increment()
+		public void Increment(string counterName)
 		{
 			throw new NotImplementedException();
 		}
