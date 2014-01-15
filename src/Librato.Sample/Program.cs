@@ -7,7 +7,7 @@ namespace Librato.Sample
 	{
 		public static void Main()
 		{
-			var writer = new L2MetWriter(Console.Out);
+			var writer = new L2MetWriter(new TraceTextWriter());
 			var reporter = new MetricReporter(writer);
 
 			// Increment count by one
