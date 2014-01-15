@@ -26,5 +26,22 @@ namespace Librato.Tests
 
 			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}={2}", "count", metricName, metricValue)));
 		}
+
+		[Fact]
+		public void ShouldWriteMetricWithPrefixIfSet()
+		{
+			var prefix = "foo";
+			var metricName = "bar";
+			var metricValue = 1;
+
+			var metric = new CountMetric(metricName, 1)
+			{
+				Prefix = prefix,
+			};
+
+			_l2MetWriter.Write(metric);
+
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, metricName, metricValue)));
+		}
 	}
 }
