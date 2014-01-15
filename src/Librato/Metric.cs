@@ -13,6 +13,14 @@
 			_value = value;
 		}
 
+		public virtual MetricType MetricType
+		{
+			get
+			{
+				return _metricType;
+			}
+		}
+
 		public virtual string Name
 		{
 			get
