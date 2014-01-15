@@ -18,6 +18,11 @@ namespace Librato
 			_textWriter.WriteLine(string.Format("{0}#{1}={2}", l2MetType, metric.Name, metric.Value));
 		}
 
+		public void Write(string source, Metric metric)
+		{
+			throw new NotImplementedException();
+		}
+
 		private static string GetL2MetType(Metric metric)
 		{
 			switch (metric.MetricType)
