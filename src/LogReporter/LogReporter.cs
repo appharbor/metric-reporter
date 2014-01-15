@@ -1,15 +1,14 @@
 ﻿using System;
-using System.IO;
 
 namespace Librato
 {
 	public class LogReporter
 	{
-		private readonly TextWriter _writer;
+		private readonly ILogWriter _logWriter;
 
-		public LogReporter(TextWriter writer)
+		public LogReporter(ILogWriter logWriter)
 		{
-			_writer = writer;
+			_logWriter = logWriter;
 		}
 
 		public void Increment(string counterName)
