@@ -14,6 +14,11 @@ namespace Librato
 			_stopwatchFactory = stopwatchFactory;
 		}
 
+		public void Group(string prefix, Action<LogReporter> logReporterAction)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Increment(string counterName, double value = 1, string source = null)
 		{
 			var metric = new CountMetric(counterName, value);
