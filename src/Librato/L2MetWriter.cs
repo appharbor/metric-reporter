@@ -14,16 +14,20 @@ namespace Librato
 
 		public void Write(Metric metric)
 		{
-			var l2MetType = GetL2MetType(metric);
-			var prefix = string.IsNullOrEmpty(metric.Prefix) ? "" : string.Format("{0}.", metric.Prefix);
-			var l2metMetric = string.Format("{0}#{1}{2}={3}", l2MetType, prefix, metric.Name, metric.Value);
-
-			_textWriter.WriteLine(l2metMetric);
+			Write(null, metric);
 		}
 
 		public void Write(string source, Metric metric)
 		{
-			throw new NotImplementedException();
+			var l2MetType = GetL2MetType(metric);
+			var prefix = string.IsNullOrEmpty(metric.Prefix) ? "" : string.Format("{0}.", metric.Prefix);
+			var output = string.Format("{0}#{1}{2}={3}", l2MetType, prefix, metric.Name, metric.Value);
+			if (!string.IsNullOrEmpty(source))
+			{
+				output = string.Format("source={0} {1}", source, output);
+			}
+
+			_textWriter.WriteLine(output);
 		}
 
 		private static string GetL2MetType(Metric metric)
