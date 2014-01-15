@@ -12,5 +12,13 @@
 			_name = name;
 			_value = value;
 		}
+
+		public virtual long Value
+		{
+			get
+			{
+				return _value;
+			}
+		}
 	}
 }
