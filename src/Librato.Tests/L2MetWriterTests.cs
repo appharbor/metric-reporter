@@ -43,5 +43,17 @@ namespace Librato.Tests
 
 			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, metricName, metricValue)));
 		}
+
+		[Fact]
+		public void ShouldPrependSourceWhenSpecified()
+		{
+			var metric = new CountMetric("foo", 1);
+			var source = "baz";
+
+			_l2MetWriter.Write(source, metric);
+
+			_textWriterMock.Verify(x => x.WriteLine(It.Is<string>(
+				y => y.StartsWith(string.Format("source={0} ", source)))));
+		}
 	}
 }
