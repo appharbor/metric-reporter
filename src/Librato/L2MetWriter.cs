@@ -36,6 +36,8 @@ namespace Librato
 			{
 				case MetricType.Count:
 					return "count";
+				case MetricType.Measure:
+					return "measure";
 				default:
 					throw new NotSupportedException();
 			}
