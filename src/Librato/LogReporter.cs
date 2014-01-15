@@ -37,7 +37,7 @@ namespace Librato
 			Measure(counterName, stopWatch.ElapsedMilliseconds, source);
 		}
 
-		private void WriteMetric(string source, Metric metric)
+		protected virtual void WriteMetric(string source, Metric metric)
 		{
 			if (string.IsNullOrEmpty(source))
 			{
