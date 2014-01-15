@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Threading;
+using Moq;
 using Xunit;
 using Xunit.Extensions;
 
@@ -48,6 +49,14 @@ namespace Librato.Tests
 			_logReporter.Measure("foo", 1);
 
 			_metricWriterMock.Verify(x => x.Write(It.IsAny<MeasureMetric>()));
+		}
+
+		[Fact]
+		public void ShouldMeasureTimeWhenInvokedWithAction()
+		{
+			_logReporter.Measure("foo", () => Thread.Sleep(20));
+
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value > 20)));
 		}
 	}
 }
