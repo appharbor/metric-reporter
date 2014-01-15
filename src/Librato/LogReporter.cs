@@ -16,5 +16,10 @@ namespace Librato
 			var metric = new CountMetric(counterName, value);
 			_metricWriter.Write(metric);
 		}
+
+		public void Measure(string counterName, string value)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
