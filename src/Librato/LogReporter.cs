@@ -6,10 +6,12 @@ namespace Librato
 	public class LogReporter
 	{
 		private readonly IMetricWriter _metricWriter;
+		private readonly StopwatchFactory _stopwatchFactory;
 
-		public LogReporter(IMetricWriter metricWriter)
+		public LogReporter(IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
 		{
 			_metricWriter = metricWriter;
+			_stopwatchFactory = stopwatchFactory;
 		}
 
 		public void Increment(string counterName, double value = 1)
