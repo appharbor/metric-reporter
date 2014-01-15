@@ -94,5 +94,14 @@ namespace Librato.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefix == prefix)));
 		}
+
+		[Fact]
+		public void ShouldInvokeActionWhenGrouping()
+		{
+			bool isActionCalled = false;
+			_logReporter.Group("foo", x => isActionCalled = true);
+
+			Assert.True(isActionCalled);
+		}
 	}
 }
