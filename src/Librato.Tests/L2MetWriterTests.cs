@@ -16,6 +16,18 @@ namespace Librato.Tests
 		}
 
 		[Fact]
+		public void ShouldSupportMeasureMetric()
+		{
+			var metricName = "foo";
+			var metricValue = 1;
+			var metric = new MeasureMetric(metricName, metricValue);
+
+			_l2MetWriter.Write(metric);
+
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("measure#{0}={1}", metricName, metricValue)));
+		}
+
+		[Fact]
 		public void ShouldWriteL2MetFormattedMetric()
 		{
 			var metricName = "foo";
