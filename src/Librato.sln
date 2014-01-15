@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogReporter", "LogReporter\LogReporter.csproj", "{7AAA4832-5430-4DE7-B828-2F623BCE3A0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Librato", "Librato\Librato.csproj", "{7AAA4832-5430-4DE7-B828-2F623BCE3A0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogReporter.Tests", "LogReporter.Tests\LogReporter.Tests.csproj", "{23D7B60E-B9DC-4A9D-87B2-AD07A0428744}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Librato.Tests", "Librato.Tests\Librato.Tests.csproj", "{23D7B60E-B9DC-4A9D-87B2-AD07A0428744}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
