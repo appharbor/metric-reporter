@@ -19,7 +19,8 @@ namespace Librato
 
 		public void Measure(string counterName, double value)
 		{
-			throw new NotImplementedException();
+			var metric = new MeasureMetric(counterName, value);
+			_metricWriter.Write(metric);
 		}
 	}
 }
