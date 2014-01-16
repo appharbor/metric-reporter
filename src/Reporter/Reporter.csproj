@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CounterMetric.cs" />
+    <Compile Include="IMetricReporter.cs" />
     <Compile Include="IMetricWriter.cs" />
     <Compile Include="L2MetWriter.cs" />
     <Compile Include="MetricReporter.cs" />

@@ -2,7 +2,7 @@
 
 namespace AppHarbor.Metrics.Reporter
 {
-	public class MetricReporter
+	public class MetricReporter : IMetricReporter
 	{
 		private readonly IMetricWriter _metricWriter;
 		private readonly StopwatchFactory _stopwatchFactory;
