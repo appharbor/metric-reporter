@@ -21,7 +21,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		[Fact]
 		public void ShouldSupportMeasureMetric()
 		{
-			var metric = new MeasureMetric(DefaultMetricName, DefaultMetricValue);
+			var metric = new GaugeMetric(DefaultMetricName, DefaultMetricValue);
 
 			_l2MetWriter.Write(metric);
 

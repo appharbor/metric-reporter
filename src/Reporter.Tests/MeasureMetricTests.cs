@@ -7,7 +7,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		[Fact]
 		public void ShouldSetMetricTypeToMeasure()
 		{
-			var measureMetric = new MeasureMetric("foo", 1);
+			var measureMetric = new GaugeMetric("foo", 1);
 
 			Assert.Equal(MetricType.Gauge, measureMetric.MetricType);
 		}

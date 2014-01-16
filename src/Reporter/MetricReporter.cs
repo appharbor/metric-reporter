@@ -49,7 +49,7 @@ namespace AppHarbor.Metrics.Reporter
 
 		public void Measure(string counterName, double value, string source = null)
 		{
-			var metric = new MeasureMetric(counterName, value);
+			var metric = new GaugeMetric(counterName, value);
 			WriteMetric(source, metric);
 		}
 

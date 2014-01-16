@@ -51,7 +51,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Measure("foo", 1);
 
-			_metricWriterMock.Verify(x => x.Write(It.IsAny<MeasureMetric>()));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<GaugeMetric>()));
 		}
 
 		[Fact]

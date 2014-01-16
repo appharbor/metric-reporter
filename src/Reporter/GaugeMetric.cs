@@ -1,8 +1,8 @@
 ﻿namespace AppHarbor.Metrics.Reporter
 {
-	public class MeasureMetric : Metric
+	public class GaugeMetric : Metric
 	{
-		public MeasureMetric(string name, double value)
+		public GaugeMetric(string name, double value)
 			: base(MetricType.Gauge, name, value)
 		{
 		}
