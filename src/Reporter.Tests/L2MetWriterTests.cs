@@ -52,10 +52,20 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		public void ShouldWriteMetricWithPrefixIfSet()
 		{
 			var prefix = "bar";
-			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue)
-			{
-				Prefix = prefix,
-			};
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
+			metric.Prefixes.Add(prefix);
+
+			_l2MetWriter.Write(metric);
+
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, DefaultMetricName, DefaultMetricValue)));
+		}
+
+		[Fact]
+		public void ShouldWriteMetricWithPrefixIfSet()
+		{
+			var prefix = "bar";
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
+			metric.Prefixes.Add(prefix);
 
 			_l2MetWriter.Write(metric);
 

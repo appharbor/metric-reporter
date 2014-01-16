@@ -1,13 +1,17 @@
-﻿namespace AppHarbor.Metrics.Reporter
+﻿using System.Collections.Generic;
+
+namespace AppHarbor.Metrics.Reporter
 {
 	public abstract class Metric
 	{
+		private readonly IList<string> _prefixes;
 		private readonly MetricType _metricType;
 		private readonly string _name;
 		private readonly double _value;
 
 		public Metric(MetricType metricType, string name, double value)
 		{
+			_prefixes = new List<string>();
 			_metricType = metricType;
 			_name = name;
 			_value = value;
@@ -37,10 +41,12 @@
 			}
 		}
 
-		public virtual string Prefix
+		public virtual IList<string> Prefixes
 		{
-			get;
-			set;
+			get
+			{
+				return _prefixes;
+			}
 		}
 	}
 }

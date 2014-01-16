@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 
 namespace AppHarbor.Metrics.Reporter
@@ -20,8 +21,7 @@ namespace AppHarbor.Metrics.Reporter
 		public void Write(Metric metric, string source)
 		{
 			var l2MetType = GetL2MetType(metric);
-			var prefix = string.IsNullOrEmpty(metric.Prefix) ? "" : string.Format("{0}.", metric.Prefix);
-			var output = string.Format("{0}#{1}{2}={3}", l2MetType, prefix, metric.Name, metric.Value);
+			var output = string.Format("{0}#{1}.{2}={3}", l2MetType, string.Join(".", metric.Prefixes.ToArray()), metric.Name, metric.Value);
 			if (!string.IsNullOrEmpty(source))
 			{
 				output = string.Format("source={0} {1}", source, output);

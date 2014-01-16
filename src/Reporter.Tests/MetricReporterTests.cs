@@ -92,7 +92,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 				x.Increment("bar");
 			});
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefix == prefix)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefixes.Contains(prefix) && y.Prefixes.Count == 1)));
 		}
 
 		[Fact]

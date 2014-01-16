@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AppHarbor.Metrics.Reporter
 {
@@ -30,7 +31,7 @@ namespace AppHarbor.Metrics.Reporter
 
 			protected override void WriteMetric(string source, Metric metric)
 			{
-				metric.Prefix = _prefix;
+				metric.Prefixes.Add(_prefix);
 				base.WriteMetric(source, metric);
 			}
 		}
