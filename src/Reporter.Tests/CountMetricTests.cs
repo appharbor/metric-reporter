@@ -9,7 +9,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			var countMetric = new CounterMetric("foo", 1);
 
-			Assert.Equal(MetricType.Count, countMetric.MetricType);
+			Assert.Equal(MetricType.Counter, countMetric.MetricType);
 		}
 	}
 }

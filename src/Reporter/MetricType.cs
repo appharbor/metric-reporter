@@ -2,7 +2,7 @@
 {
 	public enum MetricType
 	{
-		Count,
-		Measure,
+		Counter,
+		Gauge,
 	}
 }

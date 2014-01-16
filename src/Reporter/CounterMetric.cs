@@ -3,7 +3,7 @@
 	public class CounterMetric : Metric
 	{
 		public CounterMetric(string name, double value)
-			: base(MetricType.Count, name, value)
+			: base(MetricType.Counter, name, value)
 		{
 		}
 	}

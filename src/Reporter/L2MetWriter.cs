@@ -34,9 +34,9 @@ namespace AppHarbor.Metrics.Reporter
 		{
 			switch (metric.MetricType)
 			{
-				case MetricType.Count:
+				case MetricType.Counter:
 					return "count";
-				case MetricType.Measure:
+				case MetricType.Gauge:
 					return "measure";
 				default:
 					throw new NotSupportedException();

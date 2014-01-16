@@ -9,7 +9,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			var measureMetric = new MeasureMetric("foo", 1);
 
-			Assert.Equal(MetricType.Measure, measureMetric.MetricType);
+			Assert.Equal(MetricType.Gauge, measureMetric.MetricType);
 		}
 	}
 }
