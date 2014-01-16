@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Librato
+namespace AppHarbor.Metrics.Reporter
 {
 	public class StopwatchFactory
 	{

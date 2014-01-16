@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Librato.Sample")]
+[assembly: AssemblyTitle("AppHarbor.Metrics.Reporter.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Librato.Sample")]
+[assembly: AssemblyProduct("AppHarbor.Metrics.Reporter.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d0f1bf9d-4c7a-4a75-aa59-d05aea1d4518")]
+[assembly: Guid("c6570a12-e866-48ca-ace6-356caf6ae703")]
 
 // Version information for an assembly consists of the following four values:
 //

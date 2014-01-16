@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Librato
+namespace AppHarbor.Metrics.Reporter
 {
 	public class MetricReporter
 	{

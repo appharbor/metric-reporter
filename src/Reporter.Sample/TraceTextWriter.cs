@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Librato.Sample
+namespace AppHarbor.Metrics.Sample
 {
 	public class TraceTextWriter : TextWriter
 	{

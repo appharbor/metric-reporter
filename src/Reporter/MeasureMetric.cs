@@ -1,4 +1,4 @@
-﻿namespace Librato
+﻿namespace AppHarbor.Metrics.Reporter
 {
 	public class MeasureMetric : Metric
 	{

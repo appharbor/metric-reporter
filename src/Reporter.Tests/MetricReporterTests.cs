@@ -4,7 +4,7 @@ using Moq;
 using Xunit;
 using Xunit.Extensions;
 
-namespace Librato.Tests
+namespace AppHarbor.Metrics.Reporter.Tests
 {
 	public class MetricReporterTests
 	{

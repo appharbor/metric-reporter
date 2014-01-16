@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Librato.Tests
+namespace AppHarbor.Metrics.Reporter.Tests
 {
 	public class MeasureMetricTests
 	{

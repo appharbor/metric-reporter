@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD5B8D9C-180D-40BD-8E50-97AABBEAC05F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{7AAA4832-5430-4DE7-B828-2F623BCE3A0C}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Librato.Sample</RootNamespace>
-    <AssemblyName>Librato.Sample</AssemblyName>
+    <RootNamespace>AppHarbor.Metrics.Reporter</RootNamespace>
+    <AssemblyName>AppHarbor.Metrics.Reporter</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,18 +38,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CountMetric.cs" />
+    <Compile Include="IMetricWriter.cs" />
+    <Compile Include="L2MetWriter.cs" />
+    <Compile Include="MetricReporter.cs" />
+    <Compile Include="MeasureMetric.cs" />
+    <Compile Include="Metric.cs" />
+    <Compile Include="MetricType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TraceTextWriter.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Librato\Librato.csproj">
-      <Project>{7aaa4832-5430-4de7-b828-2f623bce3a0c}</Project>
-      <Name>Librato</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="StopwatchFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

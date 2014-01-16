@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Librato
+namespace AppHarbor.Metrics.Reporter
 {
 	public class L2MetWriter : IMetricWriter
 	{

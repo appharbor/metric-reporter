@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading;
+using AppHarbor.Metrics.Reporter;
 
-namespace Librato.Sample
+namespace AppHarbor.Metrics.Sample
 {
 	public class Program
 	{
