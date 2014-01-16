@@ -43,7 +43,7 @@ namespace AppHarbor.Metrics.Reporter
 
 		public void Increment(string counterName, double incrementBy = 1, string source = null)
 		{
-			var metric = new CountMetric(counterName, incrementBy);
+			var metric = new CounterMetric(counterName, incrementBy);
 			WriteMetric(source, metric);
 		}
 

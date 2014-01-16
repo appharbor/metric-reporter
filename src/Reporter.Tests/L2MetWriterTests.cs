@@ -31,7 +31,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		[Fact]
 		public void ShouldSupportCountMetric()
 		{
-			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
 
 			_l2MetWriter.Write(metric);
 
@@ -41,7 +41,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		[Fact]
 		public void ShouldWriteL2MetFormattedMetric()
 		{
-			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
 
 			_l2MetWriter.Write(metric);
 
@@ -52,7 +52,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		public void ShouldWriteMetricWithPrefixIfSet()
 		{
 			var prefix = "bar";
-			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue)
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue)
 			{
 				Prefix = prefix,
 			};
@@ -65,7 +65,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		[Fact]
 		public void ShouldPrependSourceWhenSpecified()
 		{
-			var metric = new CountMetric(DefaultMetricName, DefaultMetricValue);
+			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
 			var source = "baz";
 
 			_l2MetWriter.Write(metric, source);

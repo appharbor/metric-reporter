@@ -38,7 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountMetric.cs" />
+    <Compile Include="CounterMetric.cs" />
     <Compile Include="IMetricWriter.cs" />
     <Compile Include="L2MetWriter.cs" />
     <Compile Include="MetricReporter.cs" />

@@ -24,7 +24,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Increment("foo");
 
-			_metricWriterMock.Verify(x => x.Write(It.IsAny<CountMetric>()));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<CounterMetric>()));
 		}
 
 		[Fact]

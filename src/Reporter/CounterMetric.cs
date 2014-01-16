@@ -1,8 +1,8 @@
 ﻿namespace AppHarbor.Metrics.Reporter
 {
-	public class CountMetric : Metric
+	public class CounterMetric : Metric
 	{
-		public CountMetric(string name, double value)
+		public CounterMetric(string name, double value)
 			: base(MetricType.Count, name, value)
 		{
 		}
