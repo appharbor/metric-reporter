@@ -61,15 +61,18 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		}
 
 		[Fact]
-		public void ShouldWriteMetricWithPrefixIfSet()
+		public void ShouldWriteMetricWithMultiplePrefixes()
 		{
 			var prefix = "bar";
+			var otherPrefix = "baz";
+
 			var metric = new CounterMetric(DefaultMetricName, DefaultMetricValue);
 			metric.Prefixes.Add(prefix);
+			metric.Prefixes.Add(otherPrefix);
 
 			_l2MetWriter.Write(metric);
 
-			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}={3}", "count", prefix, DefaultMetricName, DefaultMetricValue)));
+			_textWriterMock.Verify(x => x.WriteLine(string.Format("{0}#{1}.{2}.{3}={4}", "count", prefix, otherPrefix, DefaultMetricName, DefaultMetricValue)));
 		}
 
 		[Fact]
