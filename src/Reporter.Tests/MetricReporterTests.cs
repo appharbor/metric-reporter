@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using Moq;
 using Xunit;
@@ -92,7 +93,25 @@ namespace AppHarbor.Metrics.Reporter.Tests
 				x.Increment("bar");
 			});
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefixes.Contains(prefix) && y.Prefixes.Count == 1)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefixes.Contains(prefix) && y.Prefixes.Count == 1), null));
+		}
+
+		[Fact]
+		public void ShouldAddMultiplePrefixesWithNestedGrouping()
+		{
+			var prefix = "foo";
+			var nestedPrefix = "bar";
+
+			_metricReporter.Group(prefix, x =>
+			{
+				x.Group(nestedPrefix, y =>
+				{
+					y.Increment("baz");
+				});
+			});
+
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y =>
+				y.Prefixes[0] == prefix && y.Prefixes[1] == nestedPrefix && y.Prefixes.Count == 2), null));
 		}
 
 		[Fact]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace AppHarbor.Metrics.Reporter
@@ -19,26 +20,34 @@ namespace AppHarbor.Metrics.Reporter
 			_stopwatchFactory = stopwatchFactory;
 		}
 
-		private class PrefixingMetricReporter : MetricReporter
+		private class PrefixingMetricWriter : IMetricWriter
 		{
 			private readonly string _prefix;
+			private readonly IMetricWriter _metricWriter;
 
-			public PrefixingMetricReporter(string prefix, IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
-				: base(metricWriter, stopwatchFactory)
+			public PrefixingMetricWriter(string prefix, IMetricWriter metricWriter)
 			{
 				_prefix = prefix;
+				_metricWriter = metricWriter;
 			}
 
-			protected override void WriteMetric(string source, Metric metric)
+			public void Write(Metric metric)
 			{
-				metric.Prefixes.Add(_prefix);
-				base.WriteMetric(source, metric);
+				Write(metric, source: null);
+			}
+
+			public void Write(Metric metric, string source)
+			{
+				metric.Prefixes.Insert(0, _prefix);
+				_metricWriter.Write(metric, source);
 			}
 		}
 
 		public void Group(string prefix, Action<MetricReporter> logReporterAction)
 		{
-			var logReporter = new PrefixingMetricReporter(prefix, _metricWriter, _stopwatchFactory);
+			var metricWriter = new PrefixingMetricWriter(prefix, _metricWriter);
+			var logReporter = new MetricReporter(metricWriter);
+
 			logReporterAction(logReporter);
 		}
 
