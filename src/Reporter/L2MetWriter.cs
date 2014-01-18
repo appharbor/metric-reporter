@@ -13,15 +13,11 @@ namespace AppHarbor.Metrics.Reporter
 			_textWriter = textWriter;
 		}
 
-		public void Write(Metric metric)
-		{
-			Write(metric, null);
-		}
-
-		public void Write(Metric metric, string source)
+		public void Write(Metric metric, string source = null)
 		{
 			var l2MetType = GetL2MetType(metric);
-			var output = string.Format("{0}#{1}.{2}={3}", l2MetType, string.Join(".", metric.Prefixes.ToArray()), metric.Name, metric.Value);
+			var prefix = metric.Prefixes.Any() ? string.Concat(string.Join(".", metric.Prefixes.ToArray()), ".") : "";
+			var output = string.Format("{0}#{1}{2}={3}", l2MetType, prefix, metric.Name, metric.Value);
 			if (!string.IsNullOrEmpty(source))
 			{
 				output = string.Format("source={0} {1}", source, output);

@@ -31,11 +31,6 @@ namespace AppHarbor.Metrics.Reporter
 				_metricWriter = metricWriter;
 			}
 
-			public void Write(Metric metric)
-			{
-				Write(metric, source: null);
-			}
-
 			public void Write(Metric metric, string source)
 			{
 				metric.Prefixes.Insert(0, _prefix);
@@ -76,14 +71,7 @@ namespace AppHarbor.Metrics.Reporter
 
 		protected virtual void WriteMetric(string source, Metric metric)
 		{
-			if (string.IsNullOrEmpty(source))
-			{
-				_metricWriter.Write(metric);
-			}
-			else
-			{
-				_metricWriter.Write(metric, source);
-			}
+			_metricWriter.Write(metric, source);
 		}
 	}
 }

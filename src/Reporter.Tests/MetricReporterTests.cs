@@ -25,7 +25,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Increment("foo");
 
-			_metricWriterMock.Verify(x => x.Write(It.IsAny<CounterMetric>()));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<CounterMetric>(), null));
 		}
 
 		[Fact]
@@ -33,7 +33,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Increment("foo");
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == 1)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == 1), null));
 		}
 
 		[Theory]
@@ -44,7 +44,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Increment("foo", value);
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == value)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == value), null));
 		}
 
 		[Fact]
@@ -52,7 +52,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricReporter.Measure("foo", 1);
 
-			_metricWriterMock.Verify(x => x.Write(It.IsAny<GaugeMetric>()));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<GaugeMetric>(), null));
 		}
 
 		[Fact]
@@ -63,7 +63,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 
 			_metricReporter.Measure("foo", () => Thread.Sleep(1));
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == stopwatch.ElapsedMilliseconds)));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Value == stopwatch.ElapsedMilliseconds), null));
 		}
 
 		[Fact]
