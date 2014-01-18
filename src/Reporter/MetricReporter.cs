@@ -49,13 +49,13 @@ namespace AppHarbor.Metrics.Reporter
 		public void Increment(string counterName, double incrementBy = 1, string source = null)
 		{
 			var metric = new CounterMetric(counterName, incrementBy);
-			WriteMetric(source, metric);
+			_metricWriter.Write(metric, source);
 		}
 
 		public void Measure(string gaugeName, double value, string source = null)
 		{
 			var metric = new GaugeMetric(gaugeName, value);
-			WriteMetric(source, metric);
+			_metricWriter.Write(metric, source);
 		}
 
 		public void Measure(string gaugeName, Action action, string source = null)
@@ -67,11 +67,6 @@ namespace AppHarbor.Metrics.Reporter
 			stopWatch.Stop();
 
 			Measure(gaugeName, stopWatch.ElapsedMilliseconds, source);
-		}
-
-		protected virtual void WriteMetric(string source, Metric metric)
-		{
-			_metricWriter.Write(metric, source);
 		}
 	}
 }
