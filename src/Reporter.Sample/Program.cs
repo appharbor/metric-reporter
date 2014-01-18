@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using AppHarbor.Metrics.Reporter;
 
@@ -41,8 +42,13 @@ namespace AppHarbor.Metrics.Sample
 			{
 				x.Increment("sessions", 45, "web.2");
 				x.Measure("db.execution_time", 344, "web.2");
-			});
 
+				// Add a nested prefix to a subgroup of metrics
+				x.Group("tcp", y =>
+				{
+					y.Measure("time_wait", 23);
+				});
+			});
 			Console.ReadLine();
 		}
 	}
