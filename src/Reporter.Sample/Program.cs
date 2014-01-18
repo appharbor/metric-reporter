@@ -8,16 +8,25 @@ namespace AppHarbor.Metrics.Sample
 	{
 		public static void Main()
 		{
-			// Write to console with the `Console.Out` text writer
-			var textWriter = new TraceTextWriter();
+			// Initialize a TextWriter
+			var textWriter = Console.Out;
+
+			/*
+			Write to a file instead:
+				var stream = new FileStream("c:\\foobar.txt", FileMode.Append);
+				var textWriter = new StreamWriter(stream);
+
+			Write to Trace (use this on AppHarbor):
+				var textWriter = new TraceTextWriter();
+			*/
 
 			var metricWriter = new L2MetWriter(textWriter);
 			var reporter = new MetricReporter(metricWriter);
 
-			// Increment count by one
+			// Increment "users" counter by one
 			reporter.Increment("users");
 
-			// Increment by 8 and set source
+			// Increment "products" counter by 8 while setting source
 			reporter.Increment("products", incrementBy: 8, source: "web.1");
 
 			// Measure time to complete a task
