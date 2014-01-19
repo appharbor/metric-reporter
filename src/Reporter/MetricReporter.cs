@@ -18,7 +18,7 @@ namespace AppHarbor.Metrics.Reporter
 			_stopwatchFactory = stopwatchFactory;
 		}
 
-		public void Group(string prefix, Action<MetricReporter> logReporterAction)
+		public void Group(string prefix, Action<IMetricReporter> logReporterAction)
 		{
 			var metricWriter = new PrefixingMetricWriter(prefix, _metricWriter);
 			var logReporter = new MetricReporter(metricWriter);
