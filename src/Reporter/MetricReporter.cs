@@ -28,7 +28,7 @@ namespace AppHarbor.Metrics.Reporter
 		public void Group(string prefix, Action<IMetricReporter> logReporterAction)
 		{
 			var metricWriter = new PrefixingMetricWriter(prefix, _metricWriter);
-			var logReporter = new MetricReporter(metricWriter);
+			var logReporter = new MetricReporter(metricWriter, _defaultSource);
 
 			logReporterAction(logReporter);
 		}
