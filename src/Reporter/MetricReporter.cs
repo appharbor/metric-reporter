@@ -36,7 +36,7 @@ namespace AppHarbor.Metrics.Reporter
 		public void Increment(string counterName, double incrementBy = 1, string source = null)
 		{
 			var metric = new CounterMetric(counterName, incrementBy);
-			_metricWriter.Write(metric, source);
+			WriteMetric(metric, source);
 		}
 
 		public void Measure(string gaugeName, Action action, string source = null)
@@ -53,7 +53,12 @@ namespace AppHarbor.Metrics.Reporter
 		public void Measure(string gaugeName, double value, string source = null)
 		{
 			var metric = new GaugeMetric(gaugeName, value);
-			_metricWriter.Write(metric, source);
+			WriteMetric(metric, source);
+		}
+
+		private void WriteMetric(Metric metric, string source)
+		{
+			_metricWriter.Write(metric, source ?? _defaultSource);
 		}
 	}
 }
