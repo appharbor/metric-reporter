@@ -52,12 +52,6 @@ namespace AppHarbor.Metrics.Reporter
 			_metricWriter.Write(metric, source);
 		}
 
-		public void Measure(string gaugeName, double value, string source = null)
-		{
-			var metric = new GaugeMetric(gaugeName, value);
-			_metricWriter.Write(metric, source);
-		}
-
 		public void Measure(string gaugeName, Action action, string source = null)
 		{
 			var stopWatch = _stopwatchFactory.Get();
@@ -67,6 +61,12 @@ namespace AppHarbor.Metrics.Reporter
 			stopWatch.Stop();
 
 			Measure(gaugeName, stopWatch.ElapsedMilliseconds, source);
+		}
+
+		public void Measure(string gaugeName, double value, string source = null)
+		{
+			var metric = new GaugeMetric(gaugeName, value);
+			_metricWriter.Write(metric, source);
 		}
 	}
 }
