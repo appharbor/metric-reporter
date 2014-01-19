@@ -5,16 +5,18 @@ namespace AppHarbor.Metrics.Reporter
 	public class MetricReporter : IMetricReporter
 	{
 		private readonly IMetricWriter _metricWriter;
+		private readonly string _defaultSource;
 		private readonly StopwatchFactory _stopwatchFactory;
 
 		public MetricReporter(IMetricWriter metricWriter)
-			: this(metricWriter, new StopwatchFactory())
+			: this(metricWriter, null, new StopwatchFactory())
 		{
 		}
 
-		public MetricReporter(IMetricWriter metricWriter, StopwatchFactory stopwatchFactory)
+		public MetricReporter(IMetricWriter metricWriter, string defaultSource, StopwatchFactory stopwatchFactory)
 		{
 			_metricWriter = metricWriter;
+			_defaultSource = defaultSource;
 			_stopwatchFactory = stopwatchFactory;
 		}
 
