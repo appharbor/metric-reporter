@@ -71,8 +71,9 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			var source = "foo";
 			_metricReporter.Increment("bar", source: source);
+			_metricReporter.Measure("bar", 1, source: source);
 
-			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), source));
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), source), Times.Exactly(2));
 		}
 
 		[Fact]
