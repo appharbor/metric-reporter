@@ -121,5 +121,17 @@ namespace AppHarbor.Metrics.Reporter.Tests
 
 			Assert.True(isActionCalled);
 		}
+
+		[Fact]
+		public void ShouldUseDefaultSource()
+		{
+			var defaultSource = "foo";
+			var metricReporter = new MetricReporter(_metricWriterMock.Object, defaultSource);
+
+			metricReporter.Increment("bar");
+			metricReporter.Measure("baz", 1);
+
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), defaultSource), Times.Exactly(2));
+		}
 	}
 }
