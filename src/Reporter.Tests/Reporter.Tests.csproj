@@ -51,6 +51,7 @@
     <Compile Include="L2MetWriterTests.cs" />
     <Compile Include="MetricReporterTests.cs" />
     <Compile Include="MeasureMetricTests.cs" />
+    <Compile Include="PrefixingMetricWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
