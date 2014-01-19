@@ -145,5 +145,16 @@ namespace AppHarbor.Metrics.Reporter.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), source), Times.Exactly(2));
 		}
+
+		[Fact]
+		public void ShouldUseDefaultSourceWhenGrouping()
+		{
+			var defaultSource = "foo";
+			var metricReporter = new MetricReporter(_metricWriterMock.Object, defaultSource);
+
+			metricReporter.Group("bar", x => x.Increment("baz"));
+
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), defaultSource));
+		}
 	}
 }
