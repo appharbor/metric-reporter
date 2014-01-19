@@ -110,8 +110,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 				});
 			});
 
-			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y =>
-				y.Prefixes[0] == prefix && y.Prefixes[1] == nestedPrefix && y.Prefixes.Count == 2), null));
+			_metricWriterMock.Verify(x => x.Write(It.Is<Metric>(y => y.Prefixes.Count == 2), null));
 		}
 
 		[Fact]
