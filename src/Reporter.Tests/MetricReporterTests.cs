@@ -17,7 +17,7 @@ namespace AppHarbor.Metrics.Reporter.Tests
 		{
 			_metricWriterMock = new Mock<IMetricWriter>(MockBehavior.Loose);
 			_stopwatchFactory = new Mock<StopwatchFactory>(MockBehavior.Loose);
-			_metricReporter = new MetricReporter(_metricWriterMock.Object, _stopwatchFactory.Object);
+			_metricReporter = new MetricReporter(_metricWriterMock.Object, null, _stopwatchFactory.Object);
 		}
 
 		[Fact]

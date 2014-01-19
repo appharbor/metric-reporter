@@ -9,7 +9,12 @@ namespace AppHarbor.Metrics.Reporter
 		private readonly StopwatchFactory _stopwatchFactory;
 
 		public MetricReporter(IMetricWriter metricWriter)
-			: this(metricWriter, null, new StopwatchFactory())
+			: this(metricWriter, null)
+		{
+		}
+
+		public MetricReporter(IMetricWriter metricWriter, string defaultSource)
+			: this(metricWriter, defaultSource, new StopwatchFactory())
 		{
 		}
 
