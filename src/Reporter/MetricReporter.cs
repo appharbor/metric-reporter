@@ -20,24 +20,6 @@ namespace AppHarbor.Metrics.Reporter
 			_stopwatchFactory = stopwatchFactory;
 		}
 
-		private class PrefixingMetricWriter : IMetricWriter
-		{
-			private readonly string _prefix;
-			private readonly IMetricWriter _metricWriter;
-
-			public PrefixingMetricWriter(string prefix, IMetricWriter metricWriter)
-			{
-				_prefix = prefix;
-				_metricWriter = metricWriter;
-			}
-
-			public void Write(Metric metric, string source)
-			{
-				metric.Prefixes.Insert(0, _prefix);
-				_metricWriter.Write(metric, source);
-			}
-		}
-
 		public void Group(string prefix, Action<MetricReporter> logReporterAction)
 		{
 			var metricWriter = new PrefixingMetricWriter(prefix, _metricWriter);

@@ -46,6 +46,7 @@
     <Compile Include="GaugeMetric.cs" />
     <Compile Include="Metric.cs" />
     <Compile Include="MetricType.cs" />
+    <Compile Include="PrefixingMetricWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopwatchFactory.cs" />
   </ItemGroup>
