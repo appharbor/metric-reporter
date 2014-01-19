@@ -21,7 +21,7 @@ namespace AppHarbor.Metrics.Sample
 			*/
 
 			var metricWriter = new L2MetWriter(textWriter);
-			var reporter = new MetricReporter(metricWriter);
+			var reporter = new MetricReporter(metricWriter, defaultSource: "us-region");
 
 			// Increment "users" counter by one
 			reporter.Increment("users");
@@ -40,7 +40,7 @@ namespace AppHarbor.Metrics.Sample
 			reporter.Group("eu-region", x =>
 			{
 				x.Increment("sessions", 45, "web.2");
-				x.Measure("db.execution_time", 344, "web.2");
+				x.Measure("db.execution_time", 344);
 
 				// Add a nested prefix to a subgroup of metrics
 				x.Group("tcp", y =>
