@@ -2,7 +2,7 @@
 
 namespace AppHarbor.Metrics.Reporter
 {
-	interface IMetricReporter
+	public interface IMetricReporter
 	{
 		void Group(string prefix, Action<MetricReporter> logReporterAction);
 		void Increment(string counterName, double incrementBy = 1, string source = null);
