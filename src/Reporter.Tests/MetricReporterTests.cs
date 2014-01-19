@@ -134,5 +134,17 @@ namespace AppHarbor.Metrics.Reporter.Tests
 
 			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), defaultSource), Times.Exactly(2));
 		}
+
+		[Fact]
+		public void ShouldPreferOverridingSourceAlsoWhenDefaultIsSpecified()
+		{
+			var source = "foo";
+			var metricReporter = new MetricReporter(_metricWriterMock.Object, "bar");
+
+			metricReporter.Increment("bar", source: source);
+			metricReporter.Measure("baz", 1, source: source);
+
+			_metricWriterMock.Verify(x => x.Write(It.IsAny<Metric>(), source), Times.Exactly(2));
+		}
 	}
 }
