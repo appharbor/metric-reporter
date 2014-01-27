@@ -51,14 +51,14 @@ Silence output by initializing the `StreamWriter` with `Stream.Null`:
 
 #### Source
 
-Librato's `log-reporter` supports specifying a metric source and so does this library. A default source can optionally be specified when initializing a `MetricReporter`:
+A default metric source can optionally be specified when initializing a `MetricReporter`:
 
     var reporter = new MetricReporter(metricWriter, defaultSource: "web.1");
 
 If no default source is specified your metric will be submitted without a source, unless specified when calling the helper methods `Increment` and `Measure`. You can also override the default source:
 
-    reporter.Increment("requests.total", source: "web.1");
-    reporter.Measure("request.time", 433, source: "web.1");
+    reporter.Increment("requests.total", source: "foo.1");
+    reporter.Measure("request.time", 433, source: "foo.1");
 
 NOTE: On AppHarbor you can access the worker name with [the `appharbor.worker.name` appSettings key](http://support.appharbor.com/kb/getting-started/managing-environments#worker-name).
 
@@ -70,7 +70,7 @@ You can write your metrics with prefixes prepended to all metric names. A `Prefi
     var prefixingMetricWriter = new PrefixingMetricWriter(metricWriter);
     var reporter = new MetricReporter(prefixingMetricWriter);
 
-The [`MetricReporter#Group`] method will also prepended prefixes to your metric names using a similar approach. Using multiple nested prefixes is supported.
+The [`MetricReporter#Group`](https://github.com/appharbor/metric-reporter#group) method will also prepended prefixes to your metric names using a similar approach. Using multiple nested prefixes is supported.
 
 
 ## Custom Measurements
@@ -103,7 +103,7 @@ Use when you want to track an average value _per_-measurement period. Examples:
 
 #### Measure (action)
 
-Like the other `Measure` overload this is per-period, but uses the time it takes to execute the delegate as the measurement value:
+Like the other `Measure` overload this is per-period, but uses the time it takes to execute the action delegate as the measurement value:
 
 The block form auto-submits the time it took for its contents to execute as the measurement value:
 
@@ -112,16 +112,16 @@ The block form auto-submits the time it took for its contents to execute as the 
         twitterRequest.GetResponse();
     });
 
-#### group
+#### Group
 
-There is also a grouping helper, to make managing nested metrics easier. So this:
+The group helper makes managing nested metrics easier. So this:
 
     reporter.Measure("memcached.gets", 20);
     reporter.Measure("memcached.sets", 2);
     reporter.Measure("memcached.bytes.read", 342152);
     reporter.Measure("memcached.bytes.written", 2183);
 
-Can also be written as:
+Can be written as:
 
     reporter.Group("memcached", x =>
     {
