@@ -19,14 +19,14 @@ You can now start writing metrics like so:
     reporter.Increment("user.sessions");
 
     # Benchmark time to complete a task
-	reporter.Measure("search.querytime", () =>
-	{
-	        //Do work
-	        Thread.Sleep(1000);
-	});
+    reporter.Measure("search.querytime", () =>
+    {
+            //Do work
+            Thread.Sleep(1000);
+    });
 
-	# Track averages across processes/thread/requests etc
-	reporter.Measure("payload.size", 3443);
+    # Track averages across processes/thread/requests etc
+    reporter.Measure("payload.size", 3443);
 
 ## Configuration
 
