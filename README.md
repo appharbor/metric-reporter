@@ -62,6 +62,16 @@ If no default source is specified your metric will be submitted without a source
 
 NOTE: On AppHarbor you can access the worker name with [the `appharbor.worker.name` appSettings key](http://support.appharbor.com/kb/getting-started/managing-environments#worker-name).
 
+#### Prefix
+
+You can write your metrics with prefixes prepended to all metric names. A `PrefixingMetricWriter` taking an IMetricWriter is available for this:
+
+    var metricWriter = new MetricWriter(Console.Out);
+    var prefixingMetricWriter = new PrefixingMetricWriter(metricWriter);
+    var reporter = new MetricReporter(prefixingMetricWriter);
+
+The [`MetricReporter#Group`] method will also prepended prefixes to your metric names using a similar approach. Using multiple nested prefixes is supported.
+
 
 ## Custom Measurements
 
