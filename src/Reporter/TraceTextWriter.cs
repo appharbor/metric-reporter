@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace AppHarbor.Metrics.Sample
+namespace AppHarbor.Metrics.Reporter
 {
 	public class TraceTextWriter : TextWriter
 	{
