@@ -124,3 +124,10 @@ Can also be written as:
                     y.Measure("written", 2183);
             });
     });
+
+## Contribution
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project and submit a pull request from a feature or bugfix branch.
+* Please include tests. This is important so we don't break your changes unintentionally in a future version.
