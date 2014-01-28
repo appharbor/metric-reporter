@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AppHarbor.Metrics.Reporter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Metric Reporter enables you to easily write metrics to a stream")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("AppHarbor")]
 [assembly: AssemblyProduct("AppHarbor.Metrics.Reporter")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © AppHarbor 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
