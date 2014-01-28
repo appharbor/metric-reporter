@@ -1,12 +1,12 @@
-The `metric-reporter` library provides an easy interface for writing metrics to your logs or another stream. It includes a writer to write [l2met 2.0](https://github.com/ryandotsmith/l2met) formatted log lines ultimately bound for Librato's l2met service. If your application is running on AppHarbor this allows you to easily log metrics that can be send to Librato using [a log drain](http://support.appharbor.com/kb/tips-and-tricks/logging#log-drains).
+This library provides an easy interface for writing metrics to your logs or another stream. It includes a writer to write [l2met 2.0](https://github.com/ryandotsmith/l2met) formatted log lines ultimately bound for Librato's l2met service. If your application is running on AppHarbor this allows you to easily log metrics that can be send to Librato using [a log drain](http://support.appharbor.com/kb/tips-and-tricks/logging#log-drains).
 
 This library is a port of [Librato's own log-reporter](https://github.com/librato/librato-logreporter) library intended for use with .NET applications.
 
 ## Quick Start
 
-Install `metric-reporter` in your application using NuGet:
+Install `AppHarbor.Metrics.Reporter` in your application using NuGet:
 
-    Install-Package metric-reporter
+    Install-Package AppHarbor.Metrics.Reporter
 
 Initialize a `MetricReporter` while injecting required dependencies:
 
@@ -75,7 +75,7 @@ The [`MetricReporter#Group`](https://github.com/appharbor/metric-reporter#group)
 
 ## Custom Measurements
 
-Tracking anything that interests you is easy with the `metric-reporter` library. There are four primary helpers for the `MetricReporter` class available:
+Tracking anything that interests you is easy. There are four helpers available in the `MetricReporter` class:
 
 #### Increment
 
