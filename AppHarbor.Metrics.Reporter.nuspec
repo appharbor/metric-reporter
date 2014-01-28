@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AppHarbor.Metrics.Reporter</id>
+    <version>1.0.0.0</version>
+    <title>Metric Reporter</title>
+    <authors>AppHarbor</authors>
+    <owners>AppHarbor</owners>
+    <projectUrl>https://github.com/appharbor/metric-reporter</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library provides an easy interface for writing metrics to your logs or another stream</description>
+    <copyright>Copyright © AppHarbor 2014</copyright>
+  </metadata>
+  <files>
+    <file src="src\Reporter\bin\Release\AppHarbor.Metrics.Reporter.dll" target="lib\AppHarbor.Metrics.Reporter.dll" />
+  </files>
+</package>
