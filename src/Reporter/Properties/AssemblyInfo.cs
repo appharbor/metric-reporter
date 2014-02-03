@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Metric Reporter enables you to easily write metrics to a stream")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("AppHarbor")]
-[assembly: AssemblyProduct("AppHarbor.Metrics.Reporter")]
+[assembly: AssemblyProduct("MetricReporter")]
 [assembly: AssemblyCopyright("Copyright © AppHarbor 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

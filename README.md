@@ -4,9 +4,9 @@ This library is a port of [Librato's own log-reporter](https://github.com/librat
 
 ## Quick Start
 
-Install `AppHarbor.Metrics.Reporter` in your application using NuGet:
+Install `MetricReporter` in your application using NuGet:
 
-    Install-Package AppHarbor.Metrics.Reporter
+    Install-Package MetricReporter
 
 Initialize a `MetricReporter` while injecting required dependencies:
 

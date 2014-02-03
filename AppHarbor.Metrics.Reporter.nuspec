@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>AppHarbor.Metrics.Reporter</id>
+    <id>MetricReporter</id>
     <version>1.0.0.0</version>
-    <title>Metric Reporter</title>
+    <title>MetricReporter</title>
     <authors>AppHarbor</authors>
     <owners>AppHarbor</owners>
     <projectUrl>https://github.com/appharbor/metric-reporter</projectUrl>
