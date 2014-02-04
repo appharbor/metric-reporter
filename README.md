@@ -10,7 +10,7 @@ Install `MetricReporter` in your application using NuGet:
 
 Initialize a `MetricReporter` while injecting required dependencies:
 
-    var writer = new MetricWriter(Console.Out);
+    var metricWriter = new MetricWriter(Console.Out);
     var reporter = new MetricReporter(metricWriter);
 
 You can now start writing metrics like so:
